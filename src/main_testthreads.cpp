@@ -13,6 +13,7 @@
 
 using namespace std ;
 
+//--[ basic producer / consumer test ]-----------------------------------------
 bool  g_done = false ;
 mutex g_mtx ;
 condition_variable g_sem ;
@@ -69,10 +70,7 @@ void produce_t( int32_t tid )
   printf( "produce.%d  end  (cnt: %d)\n", tid, cnt ) ;
 } // :: produce_t
 
-#define N_PRODUCERS  8
-#define N_CONSUMERS  2
-
-int main( int argc, const char *argv[] )
+void producer_consumer_test( int32_t N_PRODUCERS, int32_t N_CONSUMERS ) 
 {
   srand( time(NULL) ) ; 
 
@@ -104,8 +102,22 @@ int main( int argc, const char *argv[] )
   for( auto t : threads )
   {
     t->join() ;
+    delete t ;
   } 
+  threads.clear() ;
+  
   printf( "q_strings.size:  %ld \n", g_strings.size() ) ;  
   printf( "done.\n" ) ; 
+} // :: producer_consumer_test
+
+
+//--[ main program ]-----------------------------------------------------------
+#define N_PRODUCERS  8
+#define N_CONSUMERS  2
+
+int main( int argc, const char *argv[] )
+{
+  producer_consumer_test( N_PRODUCERS, N_CONSUMERS) ;
+
   return 0 ;
 } // :: main
