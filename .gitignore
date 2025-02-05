@@ -32,3 +32,5 @@ Release
 obsolete
 retired_code
 build/
+.vscode/
+

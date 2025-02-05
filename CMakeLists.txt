@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(${PROJECT_NAME} 
     src/main_testthreads.cpp
+    src/udp_utils.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} )
