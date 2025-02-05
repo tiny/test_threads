@@ -179,7 +179,6 @@ int16_t udp_recvfrom( SOCKET sock, UdpPacket &pkt, uint32_t timeout )
 {
   struct sockaddr_in addr ;
   pkt.used_sz = pkt.bufsz ;
-//  int16_t rc = udp_recvfrom( sock, pkt.buf, pkt.used_sz, (struct sockaddr &)pkt.ip.inet, timeout ) ;
   int16_t rc = udp_recvfrom( sock, pkt.buf, pkt.used_sz, (struct sockaddr &)addr, timeout ) ;
   pkt.ip = addr ;
   return rc ;
