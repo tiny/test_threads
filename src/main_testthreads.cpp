@@ -156,6 +156,8 @@ void server_process_t( SOCKET sock )
 
     printf( "recvd:  %d.%d.%d\n", pkt->ip.port, m->msgid, m->cnt ) ;
     g_cnt++ ;
+    // process
+    
     // push the packet back on the pool
     g_packetPool.push( pkt ) ;
   }
